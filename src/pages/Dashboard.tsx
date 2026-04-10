@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import DashboardSidebar from '@/components/dashboard/DashboardSidebar';
 import CommandCenter from '@/components/dashboard/CommandCenter';
 import AgentExecution from '@/components/dashboard/AgentExecution';
 import ActivityFeed from '@/components/dashboard/ActivityFeed';
 import ProductControlPanel from '@/components/dashboard/ProductControlPanel';
 import RightPanel from '@/components/dashboard/RightPanel';
+import BootSequence from '@/components/dashboard/BootSequence';
 import { Terminal, LayoutGrid, Activity, Package } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -18,9 +19,14 @@ const views = [
 const Dashboard: React.FC = () => {
   const [activeView, setActiveView] = useState('command');
   const [activeTab, setActiveTab] = useState('command');
+  const [booting, setBooting] = useState(true);
 
   useEffect(() => {
     document.title = 'Vytreon OS — The AI Operating System';
+  }, []);
+
+  const handleBootComplete = useCallback(() => {
+    setBooting(false);
   }, []);
 
   const handleViewChange = (view: string) => {
@@ -40,8 +46,12 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  if (booting) {
+    return <BootSequence onComplete={handleBootComplete} />;
+  }
+
   return (
-    <div className="h-screen flex bg-[#0B0F1A] overflow-hidden">
+    <div className="h-screen flex bg-[#0B0F1A] overflow-hidden animate-fade-in">
       <DashboardSidebar activeView={activeView} onViewChange={handleViewChange} />
       
       {/* Main workspace */}
