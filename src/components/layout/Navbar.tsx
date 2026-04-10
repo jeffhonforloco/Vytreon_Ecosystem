@@ -81,10 +81,10 @@ const Navbar = () => {
             </button>
           ))}
           <Button 
-            onClick={() => window.open('https://sireiq.com', '_blank')}
-            className="bg-accent hover:bg-accent/90 text-white px-6 py-2.5 rounded-lg font-semibold"
+            onClick={() => navigate('/dashboard')}
+            className="bg-[#6C5CE7] hover:bg-[#6C5CE7]/80 text-white px-6 py-2.5 rounded-lg font-semibold"
           >
-            Get Started
+            Launch Vytreon OS
           </Button>
         </div>
 
@@ -113,11 +113,11 @@ const Navbar = () => {
             <Button 
               onClick={() => {
                 setMobileMenuOpen(false);
-                window.open('https://sireiq.com', '_blank');
+                navigate('/dashboard');
               }}
-              className="bg-accent hover:bg-accent/90 text-white w-full font-semibold"
+              className="bg-[#6C5CE7] hover:bg-[#6C5CE7]/80 text-white w-full font-semibold"
             >
-              Get Started
+              Launch Vytreon OS
             </Button>
           </div>
         </div>
