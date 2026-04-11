@@ -7,12 +7,14 @@ interface VytreonHeroProps {
   onLaunch?: () => void;
 }
 
-const awosLayers = [
-  'Executive Agents',
-  'Department Managers',
-  'Task Queue System',
-  'Worker Pool',
-  'Memory Systems',
+const stackLayers = [
+  { label: 'You — The Founder', tag: 'COMMAND' },
+  { label: 'Command Center Dashboard', tag: 'INTERFACE' },
+  { label: 'Autonomous Strategy Engine', tag: 'STRATEGY' },
+  { label: 'AWOS Kernel', tag: 'COORDINATION' },
+  { label: 'Executive AI Layer', tag: 'LEADERSHIP' },
+  { label: 'Department Managers', tag: 'DELEGATION' },
+  { label: 'Task Queues → Worker Pool', tag: 'EXECUTION' },
 ];
 
 const VytreonHero: React.FC<VytreonHeroProps> = ({ onLaunch }) => {
@@ -22,7 +24,7 @@ const VytreonHero: React.FC<VytreonHeroProps> = ({ onLaunch }) => {
 
   useEffect(() => {
     requestAnimationFrame(() => setVisible(true));
-    const interval = setInterval(() => setActiveLayer(prev => (prev + 1) % awosLayers.length), 2000);
+    const interval = setInterval(() => setActiveLayer(prev => (prev + 1) % stackLayers.length), 1800);
     return () => clearInterval(interval);
   }, []);
 
@@ -57,25 +59,28 @@ const VytreonHero: React.FC<VytreonHeroProps> = ({ onLaunch }) => {
           </p>
 
           <p className="text-sm text-muted-foreground/50 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Our flagship — <span className="text-accent font-semibold">Vytreon AWOS</span> (AI Workforce Operating System) — 
-            is the coordination layer that turns AI agents into a structured, autonomous workforce. 
-            Deploy executive agents, department managers, and worker pools — like a real company, powered by AI.
+            Our flagship — <span className="text-accent font-semibold">AWOS</span> (AI Workforce Operating System) — 
+            powered by the <span className="text-accent font-semibold">Autonomous Strategy Engine</span> — 
+            discovers opportunities, generates strategies, and executes them through a fully autonomous AI workforce. 
+            You approve. AI executes.
           </p>
 
-          {/* AWOS Architecture Preview */}
+          {/* Full System Stack Preview */}
           <div className={`max-w-md mx-auto mb-12 transition-all duration-1000 delay-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
             <div className="rounded-2xl border border-border/50 bg-secondary/[0.03] p-5 backdrop-blur-sm">
-              <p className="text-[9px] font-mono text-accent/40 uppercase tracking-[0.25em] mb-4">AWOS Architecture</p>
+              <p className="text-[9px] font-mono text-accent/40 uppercase tracking-[0.25em] mb-4">Complete System Stack</p>
               <div className="space-y-1.5">
-                {['You (Founder)', 'Command Center', 'AWOS Engine', 'Executive Agents', 'Department Managers', 'Task Queues → Worker Pool'].map((layer, i) => (
+                {stackLayers.map((layer, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <div className={`w-1.5 h-1.5 rounded-full transition-colors duration-500 ${
-                      i <= activeLayer + 1 ? 'bg-accent' : 'bg-muted-foreground/20'
+                    <div className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
+                      i === activeLayer ? 'bg-accent scale-150' : i < activeLayer ? 'bg-accent/60' : 'bg-muted-foreground/20'
                     }`} />
-                    <span className={`text-xs font-mono transition-colors duration-500 ${
-                      i <= activeLayer + 1 ? 'text-foreground/80' : 'text-muted-foreground/30'
-                    }`}>{layer}</span>
-                    {i < 5 && <div className="flex-1 h-px bg-border/30" />}
+                    <span className={`text-xs font-mono transition-colors duration-500 flex-1 text-left ${
+                      i === activeLayer ? 'text-accent font-semibold' : i < activeLayer ? 'text-foreground/60' : 'text-muted-foreground/30'
+                    }`}>{layer.label}</span>
+                    <span className={`text-[8px] font-mono tracking-wider transition-colors duration-500 ${
+                      i === activeLayer ? 'text-accent/60' : 'text-muted-foreground/15'
+                    }`}>{layer.tag}</span>
                   </div>
                 ))}
               </div>

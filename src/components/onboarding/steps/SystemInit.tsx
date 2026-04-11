@@ -2,28 +2,34 @@ import React, { useState, useEffect } from 'react';
 
 const initMessages = [
   { text: 'Booting AWOS Kernel...', delay: 0, type: 'system' },
-  { text: 'Loading Agent Runtime Engine...', delay: 500, type: 'system' },
-  { text: 'Connecting to AWOS Core [████████████] OK', delay: 1000, type: 'success' },
-  { text: '', delay: 1200, type: 'blank' },
-  { text: 'Initializing Executive Layer...', delay: 1400, type: 'system' },
-  { text: '  ├─ AI CEO .................... ✓', delay: 1700, type: 'agent' },
-  { text: '  ├─ AI CPO .................... ✓', delay: 1900, type: 'agent' },
-  { text: '  ├─ AI CTO .................... ✓', delay: 2100, type: 'agent' },
-  { text: '  └─ AI CMO .................... ✓', delay: 2300, type: 'agent' },
-  { text: '', delay: 2400, type: 'blank' },
-  { text: 'Mounting Department Coordination Layer...', delay: 2500, type: 'system' },
-  { text: '  ├─ Engineering Dept .......... ✓', delay: 2700, type: 'agent' },
-  { text: '  ├─ Marketing Dept ............ ✓', delay: 2850, type: 'agent' },
-  { text: '  ├─ Sales Dept ................ ✓', delay: 3000, type: 'agent' },
-  { text: '  └─ Security Dept ............. ✓', delay: 3150, type: 'agent' },
-  { text: '', delay: 3250, type: 'blank' },
-  { text: 'Starting Task Queue System... OK', delay: 3400, type: 'success' },
+  { text: 'Loading Agent Runtime Engine...', delay: 400, type: 'system' },
+  { text: 'Connecting to AWOS Core [████████████] OK', delay: 800, type: 'success' },
+  { text: '', delay: 950, type: 'blank' },
+  { text: 'Initializing Autonomous Strategy Engine (ASE)...', delay: 1100, type: 'system' },
+  { text: '  ├─ Market Intelligence Module ..... ✓', delay: 1350, type: 'agent' },
+  { text: '  ├─ Product Opportunity Engine ..... ✓', delay: 1500, type: 'agent' },
+  { text: '  ├─ Growth Strategy Generator ...... ✓', delay: 1650, type: 'agent' },
+  { text: '  └─ Experiment Planner ............. ✓', delay: 1800, type: 'agent' },
+  { text: '', delay: 1900, type: 'blank' },
+  { text: 'Initializing Executive Layer...', delay: 2000, type: 'system' },
+  { text: '  ├─ AI CEO .................... ✓', delay: 2150, type: 'agent' },
+  { text: '  ├─ AI CPO .................... ✓', delay: 2300, type: 'agent' },
+  { text: '  ├─ AI CTO .................... ✓', delay: 2450, type: 'agent' },
+  { text: '  └─ AI CMO .................... ✓', delay: 2600, type: 'agent' },
+  { text: '', delay: 2700, type: 'blank' },
+  { text: 'Mounting Department Coordination Layer...', delay: 2800, type: 'system' },
+  { text: '  ├─ Engineering Dept .......... ✓', delay: 2950, type: 'agent' },
+  { text: '  ├─ Marketing Dept ............ ✓', delay: 3100, type: 'agent' },
+  { text: '  ├─ Sales Dept ................ ✓', delay: 3200, type: 'agent' },
+  { text: '  └─ Security Dept ............. ✓', delay: 3300, type: 'agent' },
+  { text: '', delay: 3400, type: 'blank' },
+  { text: 'Starting Task Queue System... OK', delay: 3500, type: 'success' },
   { text: 'Spawning Worker Pool... OK', delay: 3700, type: 'success' },
-  { text: 'Loading Memory Access Layer (shared knowledge)... OK', delay: 4000, type: 'success' },
-  { text: 'Enabling Approval & Governance System... OK', delay: 4300, type: 'success' },
-  { text: 'Activating Monitoring System... OK', delay: 4500, type: 'success' },
-  { text: '', delay: 4600, type: 'blank' },
-  { text: '▸ AWOS ready — your AI workforce awaits command', delay: 4800, type: 'final' },
+  { text: 'Loading Memory Access Layer (shared knowledge)... OK', delay: 3900, type: 'success' },
+  { text: 'Enabling Approval & Governance System... OK', delay: 4100, type: 'success' },
+  { text: 'Activating Monitoring System... OK', delay: 4300, type: 'success' },
+  { text: '', delay: 4400, type: 'blank' },
+  { text: '▸ AWOS + ASE ready — your AI workforce awaits command', delay: 4600, type: 'final' },
 ];
 
 interface SystemInitProps {
@@ -39,9 +45,9 @@ const SystemInit: React.FC<SystemInitProps> = ({ onComplete }) => {
       setTimeout(() => setVisibleLines(i + 1), msg.delay)
     );
     const progressInterval = setInterval(() => {
-      setProgress(prev => (prev >= 100 ? 100 : prev + 1.8));
+      setProgress(prev => (prev >= 100 ? 100 : prev + 1.9));
     }, 100);
-    const completeTimer = setTimeout(onComplete, 5600);
+    const completeTimer = setTimeout(onComplete, 5400);
     return () => { timers.forEach(clearTimeout); clearInterval(progressInterval); clearTimeout(completeTimer); };
   }, [onComplete]);
 
