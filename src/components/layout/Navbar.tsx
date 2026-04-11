@@ -3,7 +3,11 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
-const Navbar = () => {
+interface NavbarProps {
+  onLaunch?: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onLaunch }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -81,7 +85,7 @@ const Navbar = () => {
             </button>
           ))}
           <Button 
-            onClick={() => navigate('/dashboard')}
+            onClick={() => onLaunch ? onLaunch() : navigate('/dashboard')}
             className="bg-[#6C5CE7] hover:bg-[#6C5CE7]/80 text-white px-6 py-2.5 rounded-lg font-semibold"
           >
             Launch Vytreon OS
@@ -113,7 +117,7 @@ const Navbar = () => {
             <Button 
               onClick={() => {
                 setMobileMenuOpen(false);
-                navigate('/dashboard');
+                onLaunch ? onLaunch() : navigate('/dashboard');
               }}
               className="bg-[#6C5CE7] hover:bg-[#6C5CE7]/80 text-white w-full font-semibold"
             >

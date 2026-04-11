@@ -11,7 +11,11 @@ const typewriterLines = [
   { text: '> System online. Awaiting your command.', delay: 3200 },
 ];
 
-const VytreonHero = () => {
+interface VytreonHeroProps {
+  onLaunch?: () => void;
+}
+
+const VytreonHero: React.FC<VytreonHeroProps> = ({ onLaunch }) => {
   const navigate = useNavigate();
   const [visibleLines, setVisibleLines] = useState(0);
 
@@ -57,7 +61,7 @@ const VytreonHero = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <Button 
-                onClick={() => navigate('/dashboard')}
+                onClick={() => onLaunch ? onLaunch() : navigate('/dashboard')}
                 size="lg"
                 className="relative bg-[#6C5CE7] hover:bg-[#6C5CE7]/90 text-white px-10 py-7 text-lg font-semibold rounded-xl h-auto group transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(108,92,231,0.5)] overflow-hidden"
               >
