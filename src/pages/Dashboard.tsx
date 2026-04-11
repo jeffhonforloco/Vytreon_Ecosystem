@@ -83,8 +83,8 @@ const Dashboard: React.FC = () => {
             <Menu size={18} />
           </button>
 
-          {/* Tab buttons - scrollable on mobile */}
-          <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
+          {/* Tab buttons - hidden on mobile (replaced by bottom nav) */}
+          <div className="hidden sm:flex items-center gap-1 overflow-x-auto scrollbar-hide">
             {views.map((v) => (
               <button
                 key={v.id}
@@ -97,11 +97,15 @@ const Dashboard: React.FC = () => {
                 )}
               >
                 <v.icon size={13} />
-                <span className="hidden sm:inline">{v.label}</span>
-                <span className="sm:hidden">{v.shortLabel}</span>
+                {v.label}
               </button>
             ))}
           </div>
+
+          {/* Mobile: show active tab label */}
+          <span className="sm:hidden text-xs font-semibold text-white/70 truncate">
+            {views.find(v => v.id === activeTab)?.shortLabel}
+          </span>
           
           <div className="ml-auto flex items-center gap-2 shrink-0">
             {/* Right panel toggle on tablet/mobile */}
