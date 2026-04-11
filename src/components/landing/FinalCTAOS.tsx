@@ -3,7 +3,11 @@ import { Button } from '@/components/ui/button';
 import { Terminal, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const FinalCTAOS = () => {
+interface FinalCTAOSProps {
+  onLaunch?: () => void;
+}
+
+const FinalCTAOS: React.FC<FinalCTAOSProps> = ({ onLaunch }) => {
   const navigate = useNavigate();
 
   return (
@@ -22,7 +26,7 @@ const FinalCTAOS = () => {
           </p>
           
           <Button 
-            onClick={() => navigate('/dashboard')}
+            onClick={() => onLaunch ? onLaunch() : navigate('/dashboard')}
             size="lg"
             className="bg-[#6C5CE7] hover:bg-[#6C5CE7]/90 text-white px-12 py-7 text-lg font-semibold rounded-xl h-auto group transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(108,92,231,0.5)] overflow-hidden"
           >
