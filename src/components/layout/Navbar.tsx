@@ -40,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLaunch }) => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <img src="/lovable-uploads/8e349754-a378-4d24-aa39-58005d777cc5.png" alt="Vytreon Logo" className="h-16 w-auto" />
+          <img src="/lovable-uploads/8e349754-a378-4d24-aa39-58005d777cc5.png" alt="Vytreon Logo" className="h-12 w-auto" />
           <span className="text-xl font-bold text-foreground">Vytreon</span>
         </Link>
 
