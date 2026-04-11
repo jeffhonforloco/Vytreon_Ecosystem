@@ -45,6 +45,7 @@ const Dashboard: React.FC = () => {
     switch (activeTab) {
       case 'command': return <CommandCenter />;
       case 'agents': return <AgentExecution />;
+      case 'approvals': return <ApprovalPanel />;
       case 'activity': return <ActivityFeed />;
       case 'products': return <ProductControlPanel />;
       default: return <CommandCenter />;
