@@ -1,5 +1,5 @@
-Vytreon Group, LLC – The Future of Innovation
-Vytreon Group is a technology and innovation powerhouse, building products that shape the next generation of digital and physical experiences.
+Vytreon Inc. – The Future of Innovation
+Vytreon is a technology and innovation powerhouse, building products that shape the next generation of digital and physical experiences.
 We focus on AI, energy, mobility, communication, entertainment, and financial technology, with SireIQ as our flagship platform.
 🚀 Flagship Product
 SireIQ – The All-in-One AI Creative Hub
@@ -110,4 +110,4 @@ All PRs must pass CI checks before merging. Please follow the Pull Request templ
 💡 Flagship: sireiq.com
 📧 Email: info@vytreon.com
 🔗 LinkedIn: Vytreon Group
-© 2025 Vytreon Group, LLC. All rights reserved.
+© 2026 Vytreon Inc. All rights reserved.
