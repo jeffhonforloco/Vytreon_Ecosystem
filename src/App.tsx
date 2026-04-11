@@ -21,6 +21,7 @@ import Terms from "./pages/Terms";
 import Cookies from "./pages/Cookies";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import Unsubscribe from "./pages/Unsubscribe";
 
 const queryClient = new QueryClient();
 
