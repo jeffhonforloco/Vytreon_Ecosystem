@@ -87,10 +87,10 @@ export function useEvolution() {
 
   const updateRecommendation = useCallback(async (id: string, status: 'accepted' | 'rejected' | 'applied') => {
     if (!user) return;
-    const update: Record<string, any> = { status };
-    if (status === 'applied') update.applied_at = new Date().toISOString();
+    const updatePayload: { status: string; applied_at?: string } = { status };
+    if (status === 'applied') updatePayload.applied_at = new Date().toISOString();
 
-    await supabase.from('evolution_recommendations').update(update).eq('id', id);
+    await supabase.from('evolution_recommendations').update(updatePayload).eq('id', id);
   }, [user]);
 
   const seedMetrics = useCallback(async () => {
