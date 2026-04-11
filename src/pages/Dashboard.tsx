@@ -48,6 +48,7 @@ const Dashboard: React.FC = () => {
       case 'command': return <CommandCenter />;
       case 'agents': return <AgentExecution />;
       case 'approvals': return <ApprovalPanel />;
+      case 'evolution': return <AutoEvolutionPanel />;
       case 'activity': return <ActivityFeed />;
       case 'products': return <ProductControlPanel />;
       default: return <CommandCenter />;
