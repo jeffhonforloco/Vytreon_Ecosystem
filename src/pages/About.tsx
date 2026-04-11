@@ -34,7 +34,7 @@ const About = () => {
   const milestones = [
     { year: "2026", title: "Founded", description: "Vytreon Inc. established with a vision to innovate across AI, technology, and digital services" },
     { year: "2025", title: "Product Launch", description: "Building flagship products SireIQ and Fycra" },
-    { year: "2026", title: "Ecosystem Expansion", description: "Rapidly developing 12+ products across multiple industries" }
+    { year: "2023", title: "Ecosystem Expansion", description: "Rapidly developing 12+ products across multiple industries" }
   ];
 
   return (
