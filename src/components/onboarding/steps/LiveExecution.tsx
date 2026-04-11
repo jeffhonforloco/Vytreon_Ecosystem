@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Brain, Target, BarChart3, Mail, Code, Activity } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
-const executionItems = [
-  { agent: 'CEO Agent', icon: Brain, text: 'Analyzing business objectives and setting priorities...', delay: 0 },
-  { agent: 'Marketing Agent', icon: Target, text: 'Launching multi-channel campaign strategy...', delay: 800 },
-  { agent: 'Analytics Agent', icon: BarChart3, text: 'Processing real-time performance data...', delay: 1600 },
-  { agent: 'Outreach Agent', icon: Mail, text: 'Drafting personalized outreach sequences...', delay: 2400 },
-  { agent: 'Engineering Agent', icon: Code, text: 'Automating deployment and infrastructure tasks...', delay: 3200 },
+const executionLog = [
+  { dept: 'ENGINEERING', task: 'Scaffolding project architecture', worker: 'Worker-01' },
+  { dept: 'ENGINEERING', task: 'Setting up CI/CD pipeline', worker: 'Worker-02' },
+  { dept: 'MARKETING', task: 'Creating brand positioning document', worker: 'Worker-05' },
+  { dept: 'ENGINEERING', task: 'Building core API endpoints', worker: 'Worker-03' },
+  { dept: 'SALES', task: 'Generating outbound prospect list', worker: 'Worker-08' },
+  { dept: 'MARKETING', task: 'Writing launch campaign copy', worker: 'Worker-06' },
+  { dept: 'SECURITY', task: 'Running vulnerability assessment', worker: 'Worker-10' },
+  { dept: 'ENGINEERING', task: 'Deploying to staging environment', worker: 'Worker-04' },
+  { dept: 'OPERATIONS', task: 'Monitoring system health metrics', worker: 'Worker-11' },
 ];
 
 interface LiveExecutionProps {
@@ -14,15 +18,26 @@ interface LiveExecutionProps {
 }
 
 const LiveExecution: React.FC<LiveExecutionProps> = ({ onComplete }) => {
-  const [visibleItems, setVisibleItems] = useState(0);
+  const [completedTasks, setCompletedTasks] = useState(0);
 
   useEffect(() => {
-    const timers = executionItems.map((item, i) =>
-      setTimeout(() => setVisibleItems(i + 1), item.delay)
+    const timers = executionLog.map((_, i) =>
+      setTimeout(() => setCompletedTasks(i + 1), 400 + i * 450)
     );
-    timers.push(setTimeout(onComplete, 4800));
-    return () => timers.forEach(clearTimeout);
+    const done = setTimeout(onComplete, 400 + executionLog.length * 450 + 600);
+    return () => { timers.forEach(clearTimeout); clearTimeout(done); };
   }, [onComplete]);
+
+  const getDeptColor = (dept: string) => {
+    switch (dept) {
+      case 'ENGINEERING': return 'text-blue-400/80';
+      case 'MARKETING': return 'text-purple-400/80';
+      case 'SALES': return 'text-emerald-400/80';
+      case 'SECURITY': return 'text-red-400/80';
+      case 'OPERATIONS': return 'text-accent/80';
+      default: return 'text-muted-foreground';
+    }
+  };
 
   return (
     <div className="h-full flex items-center justify-center relative overflow-hidden">
@@ -31,37 +46,35 @@ const LiveExecution: React.FC<LiveExecutionProps> = ({ onComplete }) => {
       <div className="relative z-10 w-full max-w-2xl px-8">
         <div className="flex items-center gap-2 mb-2 justify-center">
           <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-          <span className="text-[10px] font-mono text-accent/60 uppercase tracking-widest">Live Execution</span>
+          <span className="text-[10px] font-mono text-accent/60 uppercase tracking-widest">AWOS Worker Pool — Live Execution</span>
         </div>
-        <p className="text-center text-muted-foreground/30 text-xs font-mono mb-8">Your AI employees are working autonomously across departments</p>
+        <p className="text-center text-muted-foreground/30 text-xs font-mono mb-8">Tasks flowing through department queues into the worker pool</p>
 
-        <div className="space-y-2">
-          {executionItems.slice(0, visibleItems).map((item, i) => {
-            const Icon = item.icon;
-            return (
-              <div key={i} className="flex items-center gap-4 px-5 py-4 rounded-xl border border-border/40 bg-secondary/10 animate-fade-in">
-                <div className="relative">
-                  <div className="p-2 rounded-lg bg-accent/10">
-                    <Icon size={16} className="text-accent" />
-                  </div>
-                  <div className="absolute -top-0.5 -right-0.5 w-2 h-2">
-                    <div className="w-full h-full rounded-full border border-accent/40 border-t-transparent animate-spin" />
-                  </div>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-accent">{item.agent}</span>
-                  <p className="text-sm text-muted-foreground font-mono truncate">{item.text}</p>
-                </div>
-                <div className="text-[9px] font-mono text-muted-foreground/20">now</div>
+        <div className="rounded-2xl border border-border bg-card/95 overflow-hidden shadow-xl">
+          <div className="flex items-center justify-between px-4 py-2.5 border-b border-border/50 bg-background/80">
+            <span className="text-[10px] font-mono text-muted-foreground/40">awos — task execution log</span>
+            <div className="flex items-center gap-1.5">
+              <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+              <span className="text-[9px] font-mono text-accent/60">{completedTasks} tasks complete</span>
+            </div>
+          </div>
+
+          <div className="p-4 space-y-1 font-mono text-xs max-h-[320px] overflow-y-auto">
+            {executionLog.slice(0, completedTasks).map((log, i) => (
+              <div key={i} className="flex items-center gap-3 py-1.5 animate-fade-in">
+                <CheckCircle2 size={12} className="text-accent flex-shrink-0" />
+                <span className={`text-[9px] uppercase tracking-wider w-20 flex-shrink-0 ${getDeptColor(log.dept)}`}>{log.dept}</span>
+                <span className="text-muted-foreground/70 flex-1 truncate">{log.task}</span>
+                <span className="text-muted-foreground/30 text-[9px]">{log.worker}</span>
               </div>
-            );
-          })}
-        </div>
-
-        <div className="mt-6 flex justify-center gap-1">
-          {[0, 1, 2, 3, 4].map(i => (
-            <div key={i} className="w-1 rounded-full bg-accent animate-pulse" style={{ height: `${12 + Math.random() * 16}px`, animationDelay: `${i * 0.15}s` }} />
-          ))}
+            ))}
+            {completedTasks < executionLog.length && (
+              <div className="flex items-center gap-2 py-1.5">
+                <span className="inline-block w-1.5 h-3 bg-accent animate-pulse" />
+                <span className="text-muted-foreground/30 text-[10px]">executing...</span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
