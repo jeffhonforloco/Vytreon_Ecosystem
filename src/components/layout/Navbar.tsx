@@ -31,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLaunch }) => {
 
   const menuItems = [
     { label: 'Products', sectionId: 'products' },
-    { label: 'Vytreon OS', sectionId: 'os' },
+    { label: 'AWOS', sectionId: 'os' },
     { label: 'About', path: '/about' },
     { label: 'Contact', path: '/contact' },
   ];
@@ -54,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLaunch }) => {
             onClick={() => onLaunch ? onLaunch() : navigate('/dashboard')}
             className="bg-accent hover:bg-accent/80 text-accent-foreground px-6 py-2.5 rounded-lg font-semibold text-sm"
           >
-            Launch Vytreon OS
+            Launch AWOS
           </Button>
         </div>
 
@@ -75,7 +75,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLaunch }) => {
               onClick={() => { setMobileMenuOpen(false); onLaunch ? onLaunch() : navigate('/dashboard'); }}
               className="bg-accent hover:bg-accent/80 text-accent-foreground w-full font-semibold"
             >
-              Launch Vytreon OS
+              Launch AWOS
             </Button>
           </div>
         </div>
