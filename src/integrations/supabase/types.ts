@@ -14,6 +14,170 @@ export type Database = {
   }
   public: {
     Tables: {
+      agent_events: {
+        Row: {
+          created_at: string
+          event_type: Database["public"]["Enums"]["agent_event_type"]
+          id: string
+          payload: Json
+          processed_at: string | null
+          source_agent: string
+          status: Database["public"]["Enums"]["agent_event_status"]
+          target_agent: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          event_type: Database["public"]["Enums"]["agent_event_type"]
+          id?: string
+          payload?: Json
+          processed_at?: string | null
+          source_agent: string
+          status?: Database["public"]["Enums"]["agent_event_status"]
+          target_agent?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          event_type?: Database["public"]["Enums"]["agent_event_type"]
+          id?: string
+          payload?: Json
+          processed_at?: string | null
+          source_agent?: string
+          status?: Database["public"]["Enums"]["agent_event_status"]
+          target_agent?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      approval_requests: {
+        Row: {
+          agent_name: string
+          channel_sent: Database["public"]["Enums"]["message_channel"]
+          created_at: string
+          description: string | null
+          expires_at: string | null
+          id: string
+          priority: string
+          responded_at: string | null
+          response_note: string | null
+          status: Database["public"]["Enums"]["approval_status"]
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          agent_name: string
+          channel_sent?: Database["public"]["Enums"]["message_channel"]
+          created_at?: string
+          description?: string | null
+          expires_at?: string | null
+          id?: string
+          priority?: string
+          responded_at?: string | null
+          response_note?: string | null
+          status?: Database["public"]["Enums"]["approval_status"]
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          agent_name?: string
+          channel_sent?: Database["public"]["Enums"]["message_channel"]
+          created_at?: string
+          description?: string | null
+          expires_at?: string | null
+          id?: string
+          priority?: string
+          responded_at?: string | null
+          response_note?: string | null
+          status?: Database["public"]["Enums"]["approval_status"]
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      messages: {
+        Row: {
+          channel: Database["public"]["Enums"]["message_channel"]
+          content: string
+          created_at: string
+          direction: Database["public"]["Enums"]["message_direction"]
+          id: string
+          metadata: Json | null
+          sender_name: string
+          sender_type: Database["public"]["Enums"]["sender_type"]
+          thread_id: string | null
+          user_id: string
+        }
+        Insert: {
+          channel?: Database["public"]["Enums"]["message_channel"]
+          content: string
+          created_at?: string
+          direction?: Database["public"]["Enums"]["message_direction"]
+          id?: string
+          metadata?: Json | null
+          sender_name?: string
+          sender_type?: Database["public"]["Enums"]["sender_type"]
+          thread_id?: string | null
+          user_id: string
+        }
+        Update: {
+          channel?: Database["public"]["Enums"]["message_channel"]
+          content?: string
+          created_at?: string
+          direction?: Database["public"]["Enums"]["message_direction"]
+          id?: string
+          metadata?: Json | null
+          sender_name?: string
+          sender_type?: Database["public"]["Enums"]["sender_type"]
+          thread_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messages_thread_id_fkey"
+            columns: ["thread_id"]
+            isOneToOne: false
+            referencedRelation: "messages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      notification_preferences: {
+        Row: {
+          channel_type: Database["public"]["Enums"]["message_channel"]
+          config: Json | null
+          created_at: string
+          enabled: boolean
+          id: string
+          preference_type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          channel_type: Database["public"]["Enums"]["message_channel"]
+          config?: Json | null
+          created_at?: string
+          enabled?: boolean
+          id?: string
+          preference_type?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          channel_type?: Database["public"]["Enums"]["message_channel"]
+          config?: Json | null
+          created_at?: string
+          enabled?: boolean
+          id?: string
+          preference_type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -82,7 +246,18 @@ export type Database = {
       }
     }
     Enums: {
+      agent_event_status: "pending" | "processing" | "completed" | "failed"
+      agent_event_type:
+        | "task_handoff"
+        | "status_update"
+        | "context_share"
+        | "escalation"
+        | "completion"
       app_role: "admin" | "moderator" | "user"
+      approval_status: "pending" | "approved" | "rejected" | "expired"
+      message_channel: "in_app" | "slack" | "telegram" | "whatsapp"
+      message_direction: "inbound" | "outbound"
+      sender_type: "user" | "agent" | "system"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -210,7 +385,19 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      agent_event_status: ["pending", "processing", "completed", "failed"],
+      agent_event_type: [
+        "task_handoff",
+        "status_update",
+        "context_share",
+        "escalation",
+        "completion",
+      ],
       app_role: ["admin", "moderator", "user"],
+      approval_status: ["pending", "approved", "rejected", "expired"],
+      message_channel: ["in_app", "slack", "telegram", "whatsapp"],
+      message_direction: ["inbound", "outbound"],
+      sender_type: ["user", "agent", "system"],
     },
   },
 } as const

@@ -4,16 +4,18 @@ import CommandCenter from '@/components/dashboard/CommandCenter';
 import AgentExecution from '@/components/dashboard/AgentExecution';
 import ActivityFeed from '@/components/dashboard/ActivityFeed';
 import ProductControlPanel from '@/components/dashboard/ProductControlPanel';
+import ApprovalPanel from '@/components/dashboard/ApprovalPanel';
 import RightPanel from '@/components/dashboard/RightPanel';
 import OnboardingFlow from '@/components/onboarding/OnboardingFlow';
-import { Terminal, LayoutGrid, Activity, Package, Menu, X, PanelRight } from 'lucide-react';
+import { Terminal, LayoutGrid, Activity, Package, Menu, X, PanelRight, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const views = [
   { id: 'command', label: 'Command Center', icon: Terminal, shortLabel: 'Command' },
   { id: 'agents', label: 'Agent Execution', icon: LayoutGrid, shortLabel: 'Agents' },
+  { id: 'approvals', label: 'Approvals', icon: Shield, shortLabel: 'Approvals' },
   { id: 'activity', label: 'Activity Feed', icon: Activity, shortLabel: 'Activity' },
-  { id: 'products', label: 'Products', icon: Package, shortLabel: 'Products' },
+  { id: 'products', label: 'Products', icon: Package, shortLabel: 'Prod' },
 ];
 
 const Dashboard: React.FC = () => {
@@ -43,6 +45,7 @@ const Dashboard: React.FC = () => {
     switch (activeTab) {
       case 'command': return <CommandCenter />;
       case 'agents': return <AgentExecution />;
+      case 'approvals': return <ApprovalPanel />;
       case 'activity': return <ActivityFeed />;
       case 'products': return <ProductControlPanel />;
       default: return <CommandCenter />;
