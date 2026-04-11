@@ -47,7 +47,7 @@ const Dashboard: React.FC = () => {
   };
 
   if (booting) {
-    return <BootSequence onComplete={handleBootComplete} />;
+    return <OnboardingFlow onComplete={handleBootComplete} />;
   }
 
   return (
