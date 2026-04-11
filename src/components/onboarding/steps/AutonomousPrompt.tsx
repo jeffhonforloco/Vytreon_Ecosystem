@@ -22,8 +22,8 @@ const AutonomousPrompt: React.FC<AutonomousPromptProps> = ({ onChoice }) => {
           Enable Autonomous Mode?
         </h2>
         <p className="text-muted-foreground text-sm mb-10 max-w-sm mx-auto leading-relaxed">
-          Vytreon OS can run your entire operation automatically — 
-          planning, executing, and optimizing 24/7.
+          AWOS can run your AI workforce fully autonomously — executives delegate, 
+          managers route, workers execute — 24/7 with governance guardrails.
         </p>
 
         <div className="flex flex-col gap-3 max-w-xs mx-auto">
@@ -35,7 +35,7 @@ const AutonomousPrompt: React.FC<AutonomousPromptProps> = ({ onChoice }) => {
             <div className="absolute -inset-1 bg-accent/30 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
             <span className="relative z-10 flex items-center justify-center gap-2 font-mono text-sm">
               <Cpu size={16} />
-              Yes, run automatically
+              Yes, run autonomously
             </span>
           </button>
 
@@ -45,7 +45,7 @@ const AutonomousPrompt: React.FC<AutonomousPromptProps> = ({ onChoice }) => {
           >
             <span className="flex items-center justify-center gap-2">
               <Shield size={16} />
-              No, I want to control it
+              No, manual approval mode
             </span>
           </button>
         </div>
