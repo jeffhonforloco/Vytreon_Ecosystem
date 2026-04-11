@@ -8,7 +8,7 @@ const Blog = () => {
   const featuredPost = {
     title: "The Future of AI-Powered Development",
     excerpt: "Discover how Vytreon's ecosystem is revolutionizing the way developers build applications with AI at the core.",
-    date: "October 20, 2025",
+    date: "October 20, 2026",
     readTime: "8 min read",
     category: "Product Updates",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop"
@@ -18,7 +18,7 @@ const Blog = () => {
     {
       title: "Introducing SireIQ 2.0: The Next Generation of AI Creativity",
       excerpt: "We're excited to announce the launch of SireIQ 2.0 with advanced multimodal capabilities and improved performance.",
-      date: "October 15, 2025",
+      date: "October 15, 2026",
       readTime: "5 min read",
       category: "Product Updates",
       image: "https://images.unsplash.com/photo-1676299081847-824916de030a?w=600&h=300&fit=crop"
@@ -26,7 +26,7 @@ const Blog = () => {
     {
       title: "Building Production Apps in Minutes with Fycra",
       excerpt: "Learn how developers are using Fycra to ship production-ready applications faster than ever before.",
-      date: "October 10, 2025",
+      date: "October 10, 2026",
       readTime: "6 min read",
       category: "Tutorials",
       image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=300&fit=crop"
@@ -34,7 +34,7 @@ const Blog = () => {
     {
       title: "SEO in the Age of AI: What You Need to Know",
       excerpt: "Explore how AI is transforming SEO and how SEOAgentPro is helping businesses stay ahead of the curve.",
-      date: "October 5, 2025",
+      date: "October 5, 2026",
       readTime: "7 min read",
       category: "Industry Insights",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=300&fit=crop"
@@ -42,7 +42,7 @@ const Blog = () => {
     {
       title: "The Rise of No-Code Development Platforms",
       excerpt: "Why no-code platforms are becoming essential tools for modern software development teams.",
-      date: "September 28, 2025",
+      date: "September 28, 2026",
       readTime: "4 min read",
       category: "Industry Insights",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop"
@@ -50,7 +50,7 @@ const Blog = () => {
     {
       title: "Building a Unified Ecosystem: The Vytreon Vision",
       excerpt: "How we're creating an integrated platform that connects all aspects of digital creation and business.",
-      date: "September 20, 2025",
+      date: "September 20, 2026",
       readTime: "6 min read",
       category: "Company News",
       image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=300&fit=crop"
@@ -58,7 +58,7 @@ const Blog = () => {
     {
       title: "Security Best Practices for API Integration",
       excerpt: "Essential security guidelines for developers integrating with Vytreon's API ecosystem.",
-      date: "September 15, 2025",
+      date: "September 15, 2026",
       readTime: "5 min read",
       category: "Tutorials",
       image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=300&fit=crop"
