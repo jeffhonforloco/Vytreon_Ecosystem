@@ -5,20 +5,19 @@ const initMessages = [
   { text: 'Loading agentic intelligence modules...', delay: 600, type: 'system' },
   { text: 'Connecting to Vytreon Brain [████████████] OK', delay: 1200, type: 'success' },
   { text: '', delay: 1500, type: 'blank' },
-  { text: 'Deploying AI workforce...', delay: 1700, type: 'system' },
-  { text: '  ├─ Strategic Agent ........... ✓', delay: 2000, type: 'agent' },
-  { text: '  ├─ Operations Agent ......... ✓', delay: 2200, type: 'agent' },
-  { text: '  ├─ Marketing Agent .......... ✓', delay: 2400, type: 'agent' },
-  { text: '  ├─ Engineering Agent ........ ✓', delay: 2600, type: 'agent' },
-  { text: '  └─ Growth Agent ............. ✓', delay: 2800, type: 'agent' },
-  { text: '', delay: 2900, type: 'blank' },
-  { text: 'Linking product ecosystem...', delay: 3000, type: 'system' },
-  { text: '  SireIQ · SEOAgentPro · Fycra · Fycera · CaptionIQ · Escazo', delay: 3300, type: 'product' },
-  { text: '', delay: 3500, type: 'blank' },
-  { text: 'Initializing autonomous decision engine...', delay: 3600, type: 'system' },
-  { text: 'Calibrating multi-agent orchestration layer... OK', delay: 4000, type: 'success' },
+  { text: 'Initializing AI Employee Framework...', delay: 1700, type: 'system' },
+  { text: '  ├─ CEO Agent ................. ✓', delay: 2000, type: 'agent' },
+  { text: '  ├─ Operations Agent .......... ✓', delay: 2200, type: 'agent' },
+  { text: '  ├─ Marketing Agent ........... ✓', delay: 2400, type: 'agent' },
+  { text: '  ├─ Engineering Agent ......... ✓', delay: 2600, type: 'agent' },
+  { text: '  ├─ Sales Agent ............... ✓', delay: 2800, type: 'agent' },
+  { text: '  └─ Custom Agent Slots ........ ∞', delay: 3000, type: 'agent' },
+  { text: '', delay: 3100, type: 'blank' },
+  { text: 'Mounting autonomous decision engine...', delay: 3200, type: 'system' },
+  { text: 'Calibrating multi-agent orchestration layer... OK', delay: 3600, type: 'success' },
+  { text: 'Enabling self-healing task pipelines... OK', delay: 4000, type: 'success' },
   { text: '', delay: 4200, type: 'blank' },
-  { text: '▸ Vytreon OS ready', delay: 4400, type: 'final' },
+  { text: '▸ Vytreon OS ready — your AI workforce awaits', delay: 4400, type: 'final' },
 ];
 
 interface SystemInitProps {
@@ -45,7 +44,6 @@ const SystemInit: React.FC<SystemInitProps> = ({ onComplete }) => {
       case 'system': return 'text-muted-foreground/70';
       case 'success': return 'text-accent';
       case 'agent': return 'text-accent/80';
-      case 'product': return 'text-accent-secondary';
       case 'final': return 'text-accent font-bold text-sm';
       default: return '';
     }

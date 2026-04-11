@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Brain, Search, FileText, TrendingUp, Cpu, Users } from 'lucide-react';
+import { Brain, Target, BarChart3, TrendingUp, Cpu, Users } from 'lucide-react';
 
 interface AgentDeploymentProps {
   onComplete: () => void;
 }
 
 const agents = [
-  { name: 'Strategic Agent', icon: Brain, role: 'Decision & Planning', delay: 0 },
-  { name: 'Operations Agent', icon: Search, role: 'Task Orchestration', delay: 400 },
-  { name: 'Marketing Agent', icon: FileText, role: 'Content & Growth', delay: 800 },
-  { name: 'Growth Agent', icon: TrendingUp, role: 'Revenue & Scale', delay: 1200 },
-  { name: 'Execution Workers', icon: Cpu, role: 'Autonomous Tasks', delay: 1600 },
+  { name: 'CEO Agent', icon: Brain, role: 'Strategy & Decisions', delay: 0 },
+  { name: 'Operations Agent', icon: Target, role: 'Task Orchestration', delay: 400 },
+  { name: 'Marketing Agent', icon: BarChart3, role: 'Growth & Outreach', delay: 800 },
+  { name: 'Sales Agent', icon: TrendingUp, role: 'Revenue & Deals', delay: 1200 },
+  { name: 'Custom Workers', icon: Cpu, role: 'Your Specialized Roles', delay: 1600 },
 ];
 
 const AgentDeployment: React.FC<AgentDeploymentProps> = ({ onComplete }) => {
@@ -32,7 +32,7 @@ const AgentDeployment: React.FC<AgentDeploymentProps> = ({ onComplete }) => {
       <div className="relative z-10 w-full max-w-3xl px-8">
         <div className="flex items-center gap-2 mb-8 justify-center">
           <Users size={14} className="text-accent" />
-          <span className="text-[10px] font-mono text-accent/60 uppercase tracking-widest">Agent Deployment</span>
+          <span className="text-[10px] font-mono text-accent/60 uppercase tracking-widest">Deploying Your AI Workforce</span>
         </div>
 
         <div className="flex flex-col items-center gap-4">

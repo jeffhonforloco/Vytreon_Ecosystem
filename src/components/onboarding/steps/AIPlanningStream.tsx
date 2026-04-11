@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Brain, Search, FileText, TrendingUp, Zap } from 'lucide-react';
+import { Brain, Users, BarChart3, TrendingUp, Zap } from 'lucide-react';
 
 interface AIPlanningStreamProps {
   goal: string;
@@ -12,12 +12,12 @@ const AIPlanningStream: React.FC<AIPlanningStreamProps> = ({ goal, onComplete })
   const [currentStreaming, setCurrentStreaming] = useState(-1);
 
   const planMessages = [
-    { agent: 'Strategic Agent', icon: Brain, text: `Analyzing objective: "${goal}"...` },
-    { agent: 'Strategic Agent', icon: Brain, text: 'Designing multi-agent execution strategy...' },
-    { agent: 'Operations Agent', icon: Search, text: 'Planning task delegation across AI workforce...' },
-    { agent: 'Marketing Agent', icon: FileText, text: 'Preparing content and growth pipeline...' },
-    { agent: 'Growth Agent', icon: TrendingUp, text: 'Allocating resources across product ecosystem...' },
-    { agent: 'Strategic Agent', icon: Brain, text: 'Strategy locked. Deploying autonomous agents.' },
+    { agent: 'CEO Agent', icon: Brain, text: `Analyzing objective: "${goal}"...` },
+    { agent: 'CEO Agent', icon: Brain, text: 'Designing organizational structure for this mission...' },
+    { agent: 'HR Agent', icon: Users, text: 'Recruiting and deploying specialized AI employees...' },
+    { agent: 'Analytics Agent', icon: BarChart3, text: 'Setting KPIs and success metrics...' },
+    { agent: 'Growth Agent', icon: TrendingUp, text: 'Mapping execution timeline and resource allocation...' },
+    { agent: 'CEO Agent', icon: Brain, text: 'Strategy locked. Deploying your AI workforce now.' },
   ];
 
   useEffect(() => {
