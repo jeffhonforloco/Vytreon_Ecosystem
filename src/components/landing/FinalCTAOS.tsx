@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Layers, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 interface FinalCTAOSProps {
@@ -16,12 +16,14 @@ const FinalCTAOS: React.FC<FinalCTAOSProps> = ({ onLaunch }) => {
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
+          <p className="text-[10px] font-mono text-accent/50 uppercase tracking-[0.25em] mb-6">The Future of Work</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 font-heading tracking-tight">
-            The future of business is autonomous.
+            Your AI company is{' '}
+            <span className="text-gradient-primary">ready to deploy.</span>
           </h2>
-          <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-            Deploy AI agents that run your operations on autopilot. 
-            Vytreon OS is the brain — your company is the body.
+          <p className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
+            Launch AWOS and deploy an autonomous AI workforce — executive agents, 
+            department managers, and workers that run your operations 24/7.
           </p>
           
           <Button 
@@ -30,15 +32,14 @@ const FinalCTAOS: React.FC<FinalCTAOSProps> = ({ onLaunch }) => {
             className="bg-accent hover:bg-accent/90 text-accent-foreground px-12 py-7 text-lg font-semibold rounded-xl h-auto group transition-all duration-300 hover:scale-105 hover:shadow-glow overflow-hidden"
           >
             <span className="relative z-10 flex items-center gap-2">
-              <Layers size={20} />
-              Launch Vytreon OS
+              Launch AWOS
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
           </Button>
 
           <p className="text-sm text-muted-foreground/30 mt-6 font-mono">
-            Available for businesses of all sizes
+            Deploy your AI workforce in under 60 seconds
           </p>
         </div>
       </div>

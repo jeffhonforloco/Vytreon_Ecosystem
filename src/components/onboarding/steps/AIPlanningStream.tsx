@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Brain, Users, BarChart3, TrendingUp, Zap } from 'lucide-react';
+import { Brain, Users, GitBranch, Database, Shield, Zap } from 'lucide-react';
 
 interface AIPlanningStreamProps {
   goal: string;
@@ -12,12 +12,13 @@ const AIPlanningStream: React.FC<AIPlanningStreamProps> = ({ goal, onComplete })
   const [currentStreaming, setCurrentStreaming] = useState(-1);
 
   const planMessages = [
-    { agent: 'CEO Agent', icon: Brain, text: `Analyzing objective: "${goal}"...` },
-    { agent: 'CEO Agent', icon: Brain, text: 'Designing organizational structure for this mission...' },
-    { agent: 'HR Agent', icon: Users, text: 'Recruiting and deploying specialized AI employees...' },
-    { agent: 'Analytics Agent', icon: BarChart3, text: 'Setting KPIs and success metrics...' },
-    { agent: 'Growth Agent', icon: TrendingUp, text: 'Mapping execution timeline and resource allocation...' },
-    { agent: 'CEO Agent', icon: Brain, text: 'Strategy locked. Deploying your AI workforce now.' },
+    { agent: 'AI CEO', icon: Brain, text: `Analyzing strategic objective: "${goal}"` },
+    { agent: 'AI CEO', icon: Brain, text: 'Breaking goal into departmental strategies...' },
+    { agent: 'AI CPO', icon: Users, text: 'Designing product roadmap and feature breakdown...' },
+    { agent: 'Task Planner', icon: GitBranch, text: 'Decomposing into executable tasks across departments...' },
+    { agent: 'Dept Router', icon: Database, text: 'Routing tasks → Engineering, Marketing, Sales, Operations...' },
+    { agent: 'Approval System', icon: Shield, text: 'Governance rules applied. Non-critical tasks auto-approved.' },
+    { agent: 'AWOS Engine', icon: Brain, text: 'Workforce plan locked. Deploying to task queues now.' },
   ];
 
   useEffect(() => {
@@ -33,11 +34,11 @@ const AIPlanningStream: React.FC<AIPlanningStreamProps> = ({ goal, onComplete })
             if (ci === chars.length - 1) {
               setTimeout(() => { setVisibleMessages(i + 1); setCurrentStreaming(-1); }, 200);
             }
-          }, ci * 18));
+          }, ci * 15));
         });
-      }, i * 1200));
+      }, i * 1100));
     });
-    timers.push(setTimeout(onComplete, planMessages.length * 1200 + 800));
+    timers.push(setTimeout(onComplete, planMessages.length * 1100 + 800));
     return () => timers.forEach(clearTimeout);
   }, [onComplete, goal]);
 
@@ -48,11 +49,11 @@ const AIPlanningStream: React.FC<AIPlanningStreamProps> = ({ goal, onComplete })
       <div className="relative z-10 w-full max-w-2xl px-8">
         <div className="flex items-center gap-3 mb-8 justify-center">
           <Zap size={16} className="text-accent" />
-          <span className="text-xs font-mono text-accent uppercase tracking-widest">AI Planning in Progress</span>
+          <span className="text-xs font-mono text-accent uppercase tracking-widest">AWOS Task Planning Engine</span>
         </div>
 
         <div className="mb-8 px-5 py-3 rounded-xl border border-border bg-secondary/20 text-center">
-          <span className="text-[10px] font-mono text-muted-foreground/30 uppercase tracking-wider">Mission</span>
+          <span className="text-[10px] font-mono text-muted-foreground/30 uppercase tracking-wider">Strategic Goal</span>
           <p className="text-foreground/70 font-mono text-sm mt-1">"{goal}"</p>
         </div>
 

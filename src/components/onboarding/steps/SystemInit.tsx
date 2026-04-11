@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
 const initMessages = [
-  { text: 'Booting Vytreon OS Core...', delay: 0, type: 'system' },
-  { text: 'Loading agentic intelligence modules...', delay: 600, type: 'system' },
-  { text: 'Connecting to Vytreon Brain [████████████] OK', delay: 1200, type: 'success' },
-  { text: '', delay: 1500, type: 'blank' },
-  { text: 'Initializing AI Employee Framework...', delay: 1700, type: 'system' },
-  { text: '  ├─ CEO Agent ................. ✓', delay: 2000, type: 'agent' },
-  { text: '  ├─ Operations Agent .......... ✓', delay: 2200, type: 'agent' },
-  { text: '  ├─ Marketing Agent ........... ✓', delay: 2400, type: 'agent' },
-  { text: '  ├─ Engineering Agent ......... ✓', delay: 2600, type: 'agent' },
-  { text: '  ├─ Sales Agent ............... ✓', delay: 2800, type: 'agent' },
-  { text: '  └─ Custom Agent Slots ........ ∞', delay: 3000, type: 'agent' },
-  { text: '', delay: 3100, type: 'blank' },
-  { text: 'Mounting autonomous decision engine...', delay: 3200, type: 'system' },
-  { text: 'Calibrating multi-agent orchestration layer... OK', delay: 3600, type: 'success' },
-  { text: 'Enabling self-healing task pipelines... OK', delay: 4000, type: 'success' },
-  { text: '', delay: 4200, type: 'blank' },
-  { text: '▸ Vytreon OS ready — your AI workforce awaits', delay: 4400, type: 'final' },
+  { text: 'Booting AWOS Kernel...', delay: 0, type: 'system' },
+  { text: 'Loading Agent Runtime Engine...', delay: 500, type: 'system' },
+  { text: 'Connecting to AWOS Core [████████████] OK', delay: 1000, type: 'success' },
+  { text: '', delay: 1200, type: 'blank' },
+  { text: 'Initializing Executive Layer...', delay: 1400, type: 'system' },
+  { text: '  ├─ AI CEO .................... ✓', delay: 1700, type: 'agent' },
+  { text: '  ├─ AI CPO .................... ✓', delay: 1900, type: 'agent' },
+  { text: '  ├─ AI CTO .................... ✓', delay: 2100, type: 'agent' },
+  { text: '  └─ AI CMO .................... ✓', delay: 2300, type: 'agent' },
+  { text: '', delay: 2400, type: 'blank' },
+  { text: 'Mounting Department Coordination Layer...', delay: 2500, type: 'system' },
+  { text: '  ├─ Engineering Dept .......... ✓', delay: 2700, type: 'agent' },
+  { text: '  ├─ Marketing Dept ............ ✓', delay: 2850, type: 'agent' },
+  { text: '  ├─ Sales Dept ................ ✓', delay: 3000, type: 'agent' },
+  { text: '  └─ Security Dept ............. ✓', delay: 3150, type: 'agent' },
+  { text: '', delay: 3250, type: 'blank' },
+  { text: 'Starting Task Queue System... OK', delay: 3400, type: 'success' },
+  { text: 'Spawning Worker Pool... OK', delay: 3700, type: 'success' },
+  { text: 'Loading Memory Access Layer (shared knowledge)... OK', delay: 4000, type: 'success' },
+  { text: 'Enabling Approval & Governance System... OK', delay: 4300, type: 'success' },
+  { text: 'Activating Monitoring System... OK', delay: 4500, type: 'success' },
+  { text: '', delay: 4600, type: 'blank' },
+  { text: '▸ AWOS ready — your AI workforce awaits command', delay: 4800, type: 'final' },
 ];
 
 interface SystemInitProps {
@@ -33,9 +39,9 @@ const SystemInit: React.FC<SystemInitProps> = ({ onComplete }) => {
       setTimeout(() => setVisibleLines(i + 1), msg.delay)
     );
     const progressInterval = setInterval(() => {
-      setProgress(prev => (prev >= 100 ? 100 : prev + 2));
+      setProgress(prev => (prev >= 100 ? 100 : prev + 1.8));
     }, 100);
-    const completeTimer = setTimeout(onComplete, 5200);
+    const completeTimer = setTimeout(onComplete, 5600);
     return () => { timers.forEach(clearTimeout); clearInterval(progressInterval); clearTimeout(completeTimer); };
   }, [onComplete]);
 
@@ -63,10 +69,10 @@ const SystemInit: React.FC<SystemInitProps> = ({ onComplete }) => {
               <div className="w-2.5 h-2.5 rounded-full bg-accent/60" />
               <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
             </div>
-            <span className="text-[10px] font-mono text-muted-foreground/40 ml-2">vytreon-os — system initialization</span>
+            <span className="text-[10px] font-mono text-muted-foreground/40 ml-2">awos — system initialization</span>
           </div>
 
-          <div className="p-6 font-mono text-xs leading-loose min-h-[350px]">
+          <div className="p-6 font-mono text-xs leading-loose min-h-[400px] max-h-[450px] overflow-y-auto">
             {initMessages.slice(0, visibleLines).map((msg, i) => (
               <div key={i} className={`${getColor(msg.type)} animate-fade-in`}>
                 {msg.text || '\u00A0'}
@@ -79,8 +85,8 @@ const SystemInit: React.FC<SystemInitProps> = ({ onComplete }) => {
 
           <div className="px-6 pb-5">
             <div className="flex justify-between mb-2">
-              <span className="text-[9px] font-mono text-muted-foreground/30 uppercase tracking-widest">Initialization</span>
-              <span className="text-[9px] font-mono text-accent">{Math.min(progress, 100)}%</span>
+              <span className="text-[9px] font-mono text-muted-foreground/30 uppercase tracking-widest">AWOS Boot Sequence</span>
+              <span className="text-[9px] font-mono text-accent">{Math.min(Math.round(progress), 100)}%</span>
             </div>
             <div className="h-0.5 w-full bg-muted rounded-full overflow-hidden">
               <div className="h-full bg-gradient-to-r from-accent to-accent-secondary rounded-full transition-all duration-150" style={{ width: `${Math.min(progress, 100)}%` }} />

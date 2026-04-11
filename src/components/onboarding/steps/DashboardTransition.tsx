@@ -22,10 +22,10 @@ const DashboardTransition: React.FC<DashboardTransitionProps> = ({ onComplete })
       <div className="relative z-10 text-center">
         <div className="flex items-center gap-2 justify-center mb-4">
           <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-          <span className="text-[10px] font-mono text-accent uppercase tracking-widest">All Systems Go</span>
+          <span className="text-[10px] font-mono text-accent uppercase tracking-widest">All Systems Operational</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-foreground font-heading animate-fade-in">
-          Launching Vytreon OS Dashboard...
+          Launching AWOS Command Center...
         </h2>
         
         <div className="flex gap-1 justify-center mt-6">

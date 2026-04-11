@@ -1,68 +1,82 @@
 import React, { useState, useEffect } from 'react';
-import { Brain, Target, BarChart3, TrendingUp, Cpu, Users } from 'lucide-react';
+import { Brain, Cpu, TrendingUp, Code, Megaphone, Shield, Users } from 'lucide-react';
 
 interface AgentDeploymentProps {
   onComplete: () => void;
 }
 
 const agents = [
-  { name: 'CEO Agent', icon: Brain, role: 'Strategy & Decisions', delay: 0 },
-  { name: 'Operations Agent', icon: Target, role: 'Task Orchestration', delay: 400 },
-  { name: 'Marketing Agent', icon: BarChart3, role: 'Growth & Outreach', delay: 800 },
-  { name: 'Sales Agent', icon: TrendingUp, role: 'Revenue & Deals', delay: 1200 },
-  { name: 'Custom Workers', icon: Cpu, role: 'Your Specialized Roles', delay: 1600 },
+  { name: 'AI CEO', icon: Brain, role: 'Strategic Direction', layer: 'EXECUTIVE', delay: 0 },
+  { name: 'AI CTO', icon: Cpu, role: 'Technical Architecture', layer: 'EXECUTIVE', delay: 400 },
+  { name: 'AI CMO', icon: TrendingUp, role: 'Growth & Marketing', layer: 'EXECUTIVE', delay: 800 },
+  { name: 'Engineering Manager', icon: Code, role: 'Backend · Frontend · Infra', layer: 'DEPARTMENT', delay: 1200 },
+  { name: 'Marketing Manager', icon: Megaphone, role: 'Content · SEO · Campaigns', layer: 'DEPARTMENT', delay: 1600 },
+  { name: 'Security Manager', icon: Shield, role: 'Audits · Compliance', layer: 'DEPARTMENT', delay: 2000 },
+  { name: 'Worker Pool', icon: Users, role: '12 autonomous workers spawned', layer: 'WORKERS', delay: 2400 },
 ];
 
 const AgentDeployment: React.FC<AgentDeploymentProps> = ({ onComplete }) => {
   const [visibleAgents, setVisibleAgents] = useState(0);
-  const [connections, setConnections] = useState(0);
 
   useEffect(() => {
     const timers = agents.map((a, i) =>
-      setTimeout(() => { setVisibleAgents(i + 1); if (i > 0) setConnections(i); }, a.delay)
+      setTimeout(() => setVisibleAgents(i + 1), a.delay)
     );
-    timers.push(setTimeout(onComplete, 3000));
+    timers.push(setTimeout(onComplete, 3600));
     return () => timers.forEach(clearTimeout);
   }, [onComplete]);
+
+  const getLayerStyle = (layer: string) => {
+    switch (layer) {
+      case 'EXECUTIVE': return 'border-accent/25 bg-accent/[0.06]';
+      case 'DEPARTMENT': return 'border-border bg-secondary/10';
+      case 'WORKERS': return 'border-accent/10 bg-accent/[0.03]';
+      default: return 'border-border bg-secondary/10';
+    }
+  };
 
   return (
     <div className="h-full flex items-center justify-center relative overflow-hidden">
       <div className="absolute w-[600px] h-[600px] rounded-full blur-[140px] bg-accent/[0.03]" />
 
-      <div className="relative z-10 w-full max-w-3xl px-8">
+      <div className="relative z-10 w-full max-w-lg px-8">
         <div className="flex items-center gap-2 mb-8 justify-center">
           <Users size={14} className="text-accent" />
-          <span className="text-[10px] font-mono text-accent/60 uppercase tracking-widest">Deploying Your AI Workforce</span>
+          <span className="text-[10px] font-mono text-accent/60 uppercase tracking-widest">AWOS — Deploying AI Workforce</span>
         </div>
 
-        <div className="flex flex-col items-center gap-4">
-          {visibleAgents > 0 && (
-            <div className="animate-scale-luxury">
-              <AgentNode agent={agents[0]} isMain />
-            </div>
-          )}
-
-          {connections > 0 && (
-            <div className="w-px h-8 bg-gradient-to-b from-accent/30 to-accent/5 animate-fade-in" />
-          )}
-
-          {visibleAgents > 1 && (
-            <div className="flex items-start gap-4 flex-wrap justify-center">
-              {agents.slice(1).map((agent, i) => (
-                i + 1 < visibleAgents && (
-                  <div key={agent.name} className="animate-scale-luxury flex flex-col items-center gap-2">
-                    <div className="w-px h-4 bg-gradient-to-b from-accent/15 to-transparent" />
-                    <AgentNode agent={agent} />
+        <div className="space-y-2">
+          {agents.slice(0, visibleAgents).map((agent, i) => {
+            const Icon = agent.icon;
+            const prevLayer = i > 0 ? agents[i - 1].layer : null;
+            const showDivider = prevLayer && prevLayer !== agent.layer;
+            return (
+              <React.Fragment key={agent.name}>
+                {showDivider && (
+                  <div className="flex items-center gap-3 py-1">
+                    <div className="flex-1 h-px bg-border/30" />
+                    <span className="text-[8px] font-mono text-muted-foreground/20 uppercase tracking-widest">{agent.layer}</span>
+                    <div className="flex-1 h-px bg-border/30" />
                   </div>
-                )
-              ))}
-            </div>
-          )}
+                )}
+                <div className={`flex items-center gap-4 px-4 py-3 rounded-xl border animate-fade-in ${getLayerStyle(agent.layer)}`}>
+                  <div className="p-2 rounded-xl bg-accent/10">
+                    <Icon size={16} className="text-accent" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <span className="text-sm font-semibold text-foreground">{agent.name}</span>
+                    <p className="text-[10px] font-mono text-muted-foreground/50">{agent.role}</p>
+                  </div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse shadow-lg shadow-accent/20" />
+                </div>
+              </React.Fragment>
+            );
+          })}
         </div>
 
-        <div className="mt-10 text-center">
+        <div className="mt-8 text-center">
           <span className="text-[10px] font-mono text-muted-foreground/30">
-            {visibleAgents}/{agents.length} agents deployed
+            {visibleAgents}/{agents.length} deployed
           </span>
           <div className="flex gap-1 justify-center mt-2">
             {agents.map((_, i) => (
@@ -71,22 +85,6 @@ const AgentDeployment: React.FC<AgentDeploymentProps> = ({ onComplete }) => {
           </div>
         </div>
       </div>
-    </div>
-  );
-};
-
-const AgentNode: React.FC<{ agent: typeof agents[0]; isMain?: boolean }> = ({ agent, isMain }) => {
-  const Icon = agent.icon;
-  return (
-    <div className={`relative flex flex-col items-center gap-2 px-5 py-4 rounded-2xl border transition-all duration-500 ${
-      isMain ? 'border-accent/25 bg-accent/[0.06] shadow-lg shadow-accent/5' : 'border-border bg-secondary/10'
-    }`}>
-      <div className="p-2 rounded-xl bg-accent/10">
-        <Icon size={isMain ? 20 : 16} className="text-accent" />
-      </div>
-      <span className="text-xs font-semibold text-foreground">{agent.name}</span>
-      <span className="text-[9px] font-mono text-muted-foreground/40 uppercase tracking-wider">{agent.role}</span>
-      <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-accent animate-pulse shadow-lg shadow-accent/20" />
     </div>
   );
 };

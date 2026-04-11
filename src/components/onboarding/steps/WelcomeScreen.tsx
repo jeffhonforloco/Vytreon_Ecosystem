@@ -37,12 +37,14 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onNext }) => {
         </div>
 
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground mb-4 font-heading">
-          Welcome to{' '}
-          <span className="text-gradient-primary">Vytreon OS</span>
+          <span className="text-gradient-primary">AWOS</span>
         </h1>
+        
+        <p className="text-lg text-muted-foreground/70 mb-2 font-mono">AI Workforce Operating System</p>
 
-        <p className={`text-xl text-muted-foreground mb-12 max-w-md mx-auto transition-all duration-1000 delay-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          The agentic AI brain for autonomous operations
+        <p className={`text-sm text-muted-foreground/50 mb-12 max-w-md mx-auto transition-all duration-1000 delay-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          Deploy a structured AI organization — executives, managers, and workers — 
+          that runs your company autonomously.
         </p>
 
         <button
@@ -56,7 +58,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onNext }) => {
           
           <span className="relative z-10 flex items-center gap-3 font-mono tracking-wide">
             <span className="w-2 h-2 rounded-full bg-accent-foreground/80 animate-pulse" />
-            Initialize System
+            Initialize AWOS
           </span>
         </button>
       </div>

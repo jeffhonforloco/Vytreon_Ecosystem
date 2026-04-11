@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 const suggestions = [
-  'Run my entire marketing department with AI',
-  'Build autonomous customer support agents',
-  'Automate my company operations end-to-end',
-  'Create an AI sales team that closes deals 24/7',
+  'Launch a new SaaS product from zero to revenue',
+  'Build and scale an AI-powered marketing engine',
+  'Automate my entire engineering pipeline',
+  'Run my company operations autonomously 24/7',
 ];
 
 interface GoalInputProps {
@@ -35,14 +35,14 @@ const GoalInput: React.FC<GoalInputProps> = ({ onSubmit }) => {
       <div className={`relative z-10 w-full max-w-2xl px-8 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
         <div className="flex items-center gap-2 mb-8 justify-center">
           <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-          <span className="text-[10px] font-mono text-accent/60 uppercase tracking-widest">System Online — Awaiting Directive</span>
+          <span className="text-[10px] font-mono text-accent/60 uppercase tracking-widest">AWOS Online — Awaiting Directive</span>
         </div>
 
         <h2 className="text-4xl md:text-5xl font-bold text-foreground text-center mb-3 font-heading tracking-tight">
-          What should your AI workforce do?
+          What should your AI workforce build?
         </h2>
         <p className="text-muted-foreground text-center mb-10 text-lg">
-          Define any mission — Vytreon OS will deploy the right agents to execute it
+          Define any mission — AWOS will deploy executives, managers, and workers to execute it
         </p>
 
         <div className="relative group mb-8">
