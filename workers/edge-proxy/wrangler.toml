@@ -1,0 +1,9 @@
+# Cloudflare Worker — Edge Proxy / Middleware
+name = "vytreon-edge-proxy"
+main = "index.ts"
+compatibility_date = "2024-12-01"
+
+# Set BACKEND_API_URL in Cloudflare Dashboard → Workers → Settings → Variables
+# or uncomment below for local dev:
+# [vars]
+# BACKEND_API_URL = "https://api.vytreon.com"

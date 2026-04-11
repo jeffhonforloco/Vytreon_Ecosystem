@@ -1,0 +1,17 @@
+# Cloudflare Pages + Workers configuration
+# Docs: https://developers.cloudflare.com/pages/configuration/wrangler-configuration/
+
+name = "vytreon-web"
+compatibility_date = "2024-12-01"
+
+# Pages configuration
+[pages]
+build_command = "npm run build"
+build_output_dir = "dist"
+
+# Environment variables available at build time
+# Set these in Cloudflare Dashboard → Pages → Settings → Environment variables:
+#   VITE_SUPABASE_URL
+#   VITE_SUPABASE_PUBLISHABLE_KEY
+#   VITE_SUPABASE_PROJECT_ID
+#   VITE_API_URL (if using an external backend)
