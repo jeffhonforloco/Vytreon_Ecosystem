@@ -181,17 +181,17 @@ const GovernanceSection = () => {
               <div className="space-y-4 relative">
                 <div className="ml-8 relative">
                   <div className="w-4 h-4 rounded-full bg-vytreon-cyan absolute -left-9 top-0"></div>
-                  <h5 className="text-white text-sm font-medium">Q2 2025: Beta Testing</h5>
+                  <h5 className="text-white text-sm font-medium">Q2 2026: Beta Testing</h5>
                   <p className="text-gray-400 text-xs">Closed beta for core modules</p>
                 </div>
                 <div className="ml-8 relative">
                   <div className="w-4 h-4 rounded-full bg-vytreon-cyan absolute -left-9 top-0"></div>
-                  <h5 className="text-white text-sm font-medium">Q3 2025: Community Onboarding</h5>
+                  <h5 className="text-white text-sm font-medium">Q3 2026: Community Onboarding</h5>
                   <p className="text-gray-400 text-xs">Public beta with early adopters</p>
                 </div>
                 <div className="ml-8 relative">
                   <div className="w-4 h-4 rounded-full bg-vytreon-cyan absolute -left-9 top-0"></div>
-                  <h5 className="text-white text-sm font-medium">Q4 2025: Full Platform Launch</h5>
+                  <h5 className="text-white text-sm font-medium">Q4 2026: Full Platform Launch</h5>
                   <p className="text-gray-400 text-xs">Complete ecosystem rollout</p>
                 </div>
                 <div className="ml-8 relative">

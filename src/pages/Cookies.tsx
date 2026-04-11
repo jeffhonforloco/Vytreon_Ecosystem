@@ -104,7 +104,7 @@ const Cookies = () => {
             </p>
             
             <p className="text-sm text-muted-foreground mt-4">
-              Last Updated: October 24, 2025
+              Last Updated: October 24, 2026
             </p>
           </div>
         </div>
