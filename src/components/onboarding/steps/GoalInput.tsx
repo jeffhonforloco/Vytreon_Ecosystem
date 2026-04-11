@@ -1,5 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { z } from 'zod';
+
+const goalSchema = z.string()
+  .trim()
+  .min(3, 'Goal must be at least 3 characters')
+  .max(500, 'Goal must be under 500 characters')
+  .refine(val => !/[<>{}]/.test(val), 'Invalid characters detected');
 
 const suggestions = [
   'Launch a new SaaS product from zero to revenue',
@@ -25,7 +32,8 @@ const GoalInput: React.FC<GoalInputProps> = ({ onSubmit }) => {
 
   const handleSubmit = (value?: string) => {
     const finalGoal = value || goal;
-    if (finalGoal.trim()) onSubmit(finalGoal.trim());
+    const result = goalSchema.safeParse(finalGoal);
+    if (result.success) onSubmit(result.data);
   };
 
   return (
@@ -54,6 +62,7 @@ const GoalInput: React.FC<GoalInputProps> = ({ onSubmit }) => {
               onChange={(e) => setGoal(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
               placeholder="e.g. Hire an AI team to scale my e-commerce business..."
+              maxLength={500}
               className="flex-1 bg-transparent text-foreground text-lg px-6 py-5 placeholder:text-muted-foreground/25 focus:outline-none font-mono"
             />
             <button
