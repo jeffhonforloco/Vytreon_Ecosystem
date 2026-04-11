@@ -1,5 +1,9 @@
 import React from 'react';
-import { ChevronRight, Bot, Users, TrendingUp, Zap, Activity, Target } from 'lucide-react';
+import { ChevronRight, Bot, Users, TrendingUp, Zap, Activity, Target, X } from 'lucide-react';
+
+interface RightPanelProps {
+  onClose?: () => void;
+}
 
 const agentHierarchy = {
   name: 'CEO Agent',
@@ -25,22 +29,30 @@ const systemStatus = [
   { label: 'API Calls/min', value: 89, color: '#FECA57' },
 ];
 
-const RightPanel: React.FC = () => {
+const RightPanel: React.FC<RightPanelProps> = ({ onClose }) => {
   return (
     <aside className="w-72 h-screen border-l border-white/[0.06] bg-[#0a0e1a] overflow-y-auto shrink-0 flex flex-col">
+      {/* Close button for mobile */}
+      {onClose && (
+        <div className="xl:hidden flex items-center justify-between px-4 py-3 border-b border-white/[0.06]">
+          <span className="text-xs font-semibold text-white/60">System Overview</span>
+          <button onClick={onClose} className="p-1 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/[0.06] transition-colors">
+            <X size={16} />
+          </button>
+        </div>
+      )}
+
       {/* Agent Hierarchy */}
       <div className="p-4 border-b border-white/[0.06]">
         <h3 className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/30 mb-3">Agent Hierarchy</h3>
         
         <div className="space-y-1">
-          {/* CEO */}
           <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg bg-[#6C5CE7]/10 border border-[#6C5CE7]/20">
             <Bot size={14} className="text-[#6C5CE7]" />
             <span className="text-xs font-semibold text-[#6C5CE7]">{agentHierarchy.name}</span>
             <div className="ml-auto w-1.5 h-1.5 rounded-full bg-[#00F5D4]" />
           </div>
           
-          {/* Managers */}
           <div className="pl-4 space-y-0.5">
             {agentHierarchy.managers.map((mgr) => (
               <div key={mgr.name} className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] transition-colors cursor-pointer group">
