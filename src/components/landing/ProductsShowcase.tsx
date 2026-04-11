@@ -1,122 +1,131 @@
 import React from 'react';
-import { ExternalLink, Brain, Search, Code, Video, MessageSquare, FileText } from 'lucide-react';
+import { ExternalLink, Brain, Search, Code, Video, MessageSquare, FileText, Plane, CreditCard, Music, Headphones } from 'lucide-react';
 
 const products = [
   { 
     name: 'SireIQ', 
-    role: 'AI Assistant', 
-    description: 'ChatGPT-level AI for chat, code, content & creative work',
-    icon: <Brain size={20} />, 
+    description: 'All-in-one AI creative platform — chat, code, content & collaboration',
+    icon: <Brain size={22} />, 
     url: 'https://sireiq.com',
-    color: '#6C5CE7',
-    status: 'active'
+    category: 'AI Platform',
+    flagship: true,
   },
   { 
     name: 'SEOAgentPro', 
-    role: 'SEO Engine', 
-    description: 'Autonomous SEO optimization with AI-driven strategies',
-    icon: <Search size={20} />, 
+    description: 'Autonomous SEO optimization powered by AI agents',
+    icon: <Search size={22} />, 
     url: 'https://seoagentpro.com',
-    color: '#00F5D4',
-    status: 'running'
+    category: 'AI Automation',
   },
   { 
     name: 'Fycra', 
-    role: 'Code Platform', 
-    description: 'AI coding & vibe platform — build apps by chatting',
-    icon: <Code size={20} />, 
+    description: 'AI coding & vibe platform — build production apps by chatting',
+    icon: <Code size={22} />, 
     url: 'https://www.fycra.com',
-    color: '#A855F7',
-    status: 'active'
+    category: 'Development',
+    flagship: true,
   },
   { 
     name: 'Fycera', 
-    role: 'Video AI', 
-    description: 'Advanced AI video generation & editing',
-    icon: <Video size={20} />, 
+    description: 'Advanced AI video generation & editing platform',
+    icon: <Video size={22} />, 
     url: 'https://fycera.com',
-    color: '#F59E0B',
-    status: 'processing'
+    category: 'AI Creative',
   },
   { 
     name: 'CaptionIQ', 
-    role: 'Social Growth', 
-    description: 'AI captions, analytics & social media automation',
-    icon: <FileText size={20} />, 
+    description: 'AI captions, analytics & social media growth automation',
+    icon: <FileText size={22} />, 
     url: 'https://www.captioniq.io',
-    color: '#EC4899',
-    status: 'active'
+    category: 'Social Growth',
+  },
+  { 
+    name: 'Escazo', 
+    description: 'AI-powered travel companion for flights, hotels & insights',
+    icon: <Plane size={22} />, 
+    url: 'https://www.escazo.com',
+    category: 'Travel',
+  },
+  { 
+    name: 'Oowo', 
+    description: 'AI-enhanced global payment and trade platform',
+    icon: <CreditCard size={22} />, 
+    url: '#',
+    category: 'Finance',
+  },
+  { 
+    name: 'VoxSaga', 
+    description: 'AI-powered podcast creation, hosting & monetization',
+    icon: <Headphones size={22} />, 
+    url: 'https://www.voxsaga.com',
+    category: 'Media',
   },
   { 
     name: 'CumnIQ', 
-    role: 'Social Platform', 
-    description: 'Intelligent social platform with gamification & AI',
-    icon: <MessageSquare size={20} />, 
+    description: 'IQ-focused social platform with gamification & AI',
+    icon: <MessageSquare size={22} />, 
     url: '#',
-    color: '#3B82F6',
-    status: 'idle'
+    category: 'Social',
+  },
+  { 
+    name: 'Didit360', 
+    description: 'Music streaming and MusicNFT platform',
+    icon: <Music size={22} />, 
+    url: '#',
+    category: 'Entertainment',
   },
 ];
 
-const statusColors: Record<string, string> = {
-  active: '#00F5D4',
-  running: '#6C5CE7',
-  processing: '#F59E0B',
-  idle: '#64748B',
-};
-
 const ProductsShowcase = () => {
   return (
-    <section id="os-products" className="py-24 md:py-32 bg-[#0B0F1A] relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.02]" style={{
-        backgroundImage: 'linear-gradient(rgba(108,92,231,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(108,92,231,0.5) 1px, transparent 1px)',
-        backgroundSize: '60px 60px'
-      }} />
+    <section id="products" className="py-24 md:py-32 bg-background relative overflow-hidden">
+      {/* Subtle divider glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#6C5CE7]/20 bg-[#6C5CE7]/5 mb-6">
-            <span className="text-xs font-mono text-[#6C5CE7] tracking-wider uppercase">Ecosystem Agents</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Products controlled by <span className="text-[#6C5CE7]">Vytreon Brain</span>
+          <p className="text-[10px] font-mono text-accent/60 uppercase tracking-[0.2em] mb-4">Our Portfolio</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 font-heading tracking-tight">
+            Products & Companies
           </h2>
-          <p className="text-lg text-white/40 max-w-2xl mx-auto">
-            Each product operates as an autonomous agent within the OS. Give one command — all products coordinate.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            A diversified portfolio of AI-powered products, software platforms, and digital services — each built to lead its category.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
           {products.map((product, i) => (
             <button
               key={i}
               onClick={() => product.url !== '#' && window.open(product.url, '_blank')}
-              className="group text-left rounded-xl border border-white/[0.06] bg-[#121826] p-5 hover:border-white/[0.12] hover:bg-[#1a2235] transition-all duration-300 hover:shadow-lg hover:shadow-black/30"
+              className={`group text-left rounded-xl border p-6 transition-all duration-300 hover:shadow-lg hover:shadow-black/30 ${
+                product.flagship 
+                  ? 'border-accent/20 bg-accent/[0.03] hover:border-accent/40 lg:col-span-1' 
+                  : 'border-border/60 bg-secondary/10 hover:border-border hover:bg-secondary/20'
+              }`}
             >
-              <div className="flex items-start justify-between mb-3">
+              <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div 
-                    className="w-10 h-10 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: `${product.color}15`, color: product.color }}
-                  >
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                    product.flagship ? 'bg-accent/10 text-accent' : 'bg-muted text-muted-foreground'
+                  }`}>
                     {product.icon}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="font-semibold text-white text-sm">{product.name}</h3>
+                      <h3 className="font-semibold text-foreground text-sm group-hover:text-accent transition-colors">{product.name}</h3>
                       {product.url !== '#' && (
-                        <ExternalLink size={11} className="text-white/20 group-hover:text-white/50 transition-colors" />
+                        <ExternalLink size={11} className="text-muted-foreground/30 group-hover:text-accent/50 transition-colors" />
                       )}
                     </div>
-                    <p className="text-[11px] font-mono text-white/30">{product.role}</p>
+                    <p className="text-[10px] font-mono text-muted-foreground/50 uppercase tracking-wider">{product.category}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/[0.03]">
-                  <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: statusColors[product.status] }} />
-                  <span className="text-[10px] font-mono" style={{ color: statusColors[product.status] }}>{product.status}</span>
-                </div>
+                {product.flagship && (
+                  <span className="text-[9px] font-mono text-accent/70 uppercase tracking-wider px-2 py-0.5 rounded-full border border-accent/20 bg-accent/[0.05]">Flagship</span>
+                )}
               </div>
-              <p className="text-xs text-white/40 leading-relaxed">{product.description}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{product.description}</p>
             </button>
           ))}
         </div>

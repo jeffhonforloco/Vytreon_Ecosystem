@@ -43,7 +43,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete }) => {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#0B0F1A]">
+    <div className="fixed inset-0 z-50 bg-background">
       {steps[step]}
     </div>
   );
