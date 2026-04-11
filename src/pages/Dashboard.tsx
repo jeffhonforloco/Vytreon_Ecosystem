@@ -122,9 +122,28 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
 
-        {/* Content */}
-        <div className="flex-1 min-h-0">
+        {/* Content - add bottom padding on mobile for bottom nav */}
+        <div className="flex-1 min-h-0 pb-14 sm:pb-0">
           {renderMainContent()}
+        </div>
+
+        {/* Mobile bottom navigation */}
+        <div className="sm:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#0a0e1a] border-t border-white/[0.06] flex items-center justify-around px-1 py-1.5 safe-bottom">
+          {views.map((v) => (
+            <button
+              key={v.id}
+              onClick={() => setActiveTab(v.id)}
+              className={cn(
+                "flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl transition-all duration-200 min-w-0 flex-1",
+                activeTab === v.id
+                  ? "text-[#6C5CE7] bg-[#6C5CE7]/10"
+                  : "text-white/30 active:text-white/60"
+              )}
+            >
+              <v.icon size={18} strokeWidth={activeTab === v.id ? 2.5 : 1.5} />
+              <span className="text-[9px] font-medium leading-none truncate">{v.shortLabel}</span>
+            </button>
+          ))}
         </div>
       </div>
 
