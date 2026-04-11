@@ -5,7 +5,7 @@ import AgentExecution from '@/components/dashboard/AgentExecution';
 import ActivityFeed from '@/components/dashboard/ActivityFeed';
 import ProductControlPanel from '@/components/dashboard/ProductControlPanel';
 import RightPanel from '@/components/dashboard/RightPanel';
-import BootSequence from '@/components/dashboard/BootSequence';
+import OnboardingFlow from '@/components/onboarding/OnboardingFlow';
 import { Terminal, LayoutGrid, Activity, Package } from 'lucide-react';
 import { cn } from '@/lib/utils';
 

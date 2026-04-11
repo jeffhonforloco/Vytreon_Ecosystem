@@ -21,7 +21,7 @@ const AIPlanningStream: React.FC<AIPlanningStreamProps> = ({ goal, onComplete })
   ];
 
   useEffect(() => {
-    const timers: NodeJS.Timeout[] = [];
+    const timers: ReturnType<typeof setTimeout>[] = [];
     
     planMessages.forEach((msg, i) => {
       // Start streaming for this message
