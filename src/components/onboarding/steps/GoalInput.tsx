@@ -62,6 +62,7 @@ const GoalInput: React.FC<GoalInputProps> = ({ onSubmit }) => {
               onChange={(e) => setGoal(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
               placeholder="e.g. Hire an AI team to scale my e-commerce business..."
+              maxLength={500}
               className="flex-1 bg-transparent text-foreground text-lg px-6 py-5 placeholder:text-muted-foreground/25 focus:outline-none font-mono"
             />
             <button
