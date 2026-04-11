@@ -98,6 +98,87 @@ export type Database = {
         }
         Relationships: []
       }
+      evolution_metrics: {
+        Row: {
+          agent_name: string
+          created_at: string
+          id: string
+          improvement_pct: number | null
+          metadata: Json | null
+          metric_type: string
+          metric_value: number
+          period_end: string | null
+          period_start: string
+          user_id: string
+        }
+        Insert: {
+          agent_name: string
+          created_at?: string
+          id?: string
+          improvement_pct?: number | null
+          metadata?: Json | null
+          metric_type?: string
+          metric_value?: number
+          period_end?: string | null
+          period_start?: string
+          user_id: string
+        }
+        Update: {
+          agent_name?: string
+          created_at?: string
+          id?: string
+          improvement_pct?: number | null
+          metadata?: Json | null
+          metric_type?: string
+          metric_value?: number
+          period_end?: string | null
+          period_start?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      evolution_recommendations: {
+        Row: {
+          ai_reasoning: string | null
+          applied_at: string | null
+          category: Database["public"]["Enums"]["evolution_category"]
+          created_at: string
+          description: string | null
+          id: string
+          impact_score: number
+          status: Database["public"]["Enums"]["recommendation_status"]
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          ai_reasoning?: string | null
+          applied_at?: string | null
+          category: Database["public"]["Enums"]["evolution_category"]
+          created_at?: string
+          description?: string | null
+          id?: string
+          impact_score?: number
+          status?: Database["public"]["Enums"]["recommendation_status"]
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          ai_reasoning?: string | null
+          applied_at?: string | null
+          category?: Database["public"]["Enums"]["evolution_category"]
+          created_at?: string
+          description?: string | null
+          id?: string
+          impact_score?: number
+          status?: Database["public"]["Enums"]["recommendation_status"]
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       messages: {
         Row: {
           channel: Database["public"]["Enums"]["message_channel"]
@@ -211,6 +292,53 @@ export type Database = {
         }
         Relationships: []
       }
+      prompt_versions: {
+        Row: {
+          agent_name: string
+          change_summary: string | null
+          created_at: string
+          id: string
+          is_active: boolean
+          parent_version_id: string | null
+          performance_score: number | null
+          prompt_text: string
+          user_id: string
+          version: number
+        }
+        Insert: {
+          agent_name: string
+          change_summary?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          parent_version_id?: string | null
+          performance_score?: number | null
+          prompt_text: string
+          user_id: string
+          version?: number
+        }
+        Update: {
+          agent_name?: string
+          change_summary?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          parent_version_id?: string | null
+          performance_score?: number | null
+          prompt_text?: string
+          user_id?: string
+          version?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "prompt_versions_parent_version_id_fkey"
+            columns: ["parent_version_id"]
+            isOneToOne: false
+            referencedRelation: "prompt_versions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -255,8 +383,15 @@ export type Database = {
         | "completion"
       app_role: "admin" | "moderator" | "user"
       approval_status: "pending" | "approved" | "rejected" | "expired"
+      evolution_category:
+        | "agent"
+        | "workflow"
+        | "prompt"
+        | "tool"
+        | "architecture"
       message_channel: "in_app" | "slack" | "telegram" | "whatsapp"
       message_direction: "inbound" | "outbound"
+      recommendation_status: "pending" | "accepted" | "rejected" | "applied"
       sender_type: "user" | "agent" | "system"
     }
     CompositeTypes: {
@@ -395,8 +530,16 @@ export const Constants = {
       ],
       app_role: ["admin", "moderator", "user"],
       approval_status: ["pending", "approved", "rejected", "expired"],
+      evolution_category: [
+        "agent",
+        "workflow",
+        "prompt",
+        "tool",
+        "architecture",
+      ],
       message_channel: ["in_app", "slack", "telegram", "whatsapp"],
       message_direction: ["inbound", "outbound"],
+      recommendation_status: ["pending", "accepted", "rejected", "applied"],
       sender_type: ["user", "agent", "system"],
     },
   },
