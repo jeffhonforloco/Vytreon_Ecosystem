@@ -348,4 +348,7 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
 }
