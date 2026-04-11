@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Search, FileText, Video, Code, Activity } from 'lucide-react';
+import { Brain, Target, BarChart3, Mail, Code, Activity } from 'lucide-react';
 
 const executionItems = [
-  { product: 'SEOAgentPro', icon: Search, text: 'Auditing website structure and meta tags...', delay: 0 },
-  { product: 'CaptionIQ', icon: FileText, text: 'Generating 15 social media posts...', delay: 800 },
-  { product: 'Fycera', icon: Video, text: 'Creating promotional video content...', delay: 1600 },
-  { product: 'Fycra', icon: Code, text: 'Building automation workflows...', delay: 2400 },
-  { product: 'SireIQ', icon: Activity, text: 'Synthesizing competitive analysis report...', delay: 3200 },
+  { agent: 'CEO Agent', icon: Brain, text: 'Analyzing business objectives and setting priorities...', delay: 0 },
+  { agent: 'Marketing Agent', icon: Target, text: 'Launching multi-channel campaign strategy...', delay: 800 },
+  { agent: 'Analytics Agent', icon: BarChart3, text: 'Processing real-time performance data...', delay: 1600 },
+  { agent: 'Outreach Agent', icon: Mail, text: 'Drafting personalized outreach sequences...', delay: 2400 },
+  { agent: 'Engineering Agent', icon: Code, text: 'Automating deployment and infrastructure tasks...', delay: 3200 },
 ];
 
 interface LiveExecutionProps {
@@ -33,7 +33,7 @@ const LiveExecution: React.FC<LiveExecutionProps> = ({ onComplete }) => {
           <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
           <span className="text-[10px] font-mono text-accent/60 uppercase tracking-widest">Live Execution</span>
         </div>
-        <p className="text-center text-muted-foreground/30 text-xs font-mono mb-8">Vytreon OS agents are working across the product ecosystem</p>
+        <p className="text-center text-muted-foreground/30 text-xs font-mono mb-8">Your AI employees are working autonomously across departments</p>
 
         <div className="space-y-2">
           {executionItems.slice(0, visibleItems).map((item, i) => {
@@ -49,7 +49,7 @@ const LiveExecution: React.FC<LiveExecutionProps> = ({ onComplete }) => {
                   </div>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-accent">{item.product}</span>
+                  <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-accent">{item.agent}</span>
                   <p className="text-sm text-muted-foreground font-mono truncate">{item.text}</p>
                 </div>
                 <div className="text-[9px] font-mono text-muted-foreground/20">now</div>

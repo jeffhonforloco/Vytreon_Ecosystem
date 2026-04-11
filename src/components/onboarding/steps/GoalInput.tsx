@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 const suggestions = [
-  'Deploy AI agents for my marketing team',
-  'Automate SEO across all my websites',
-  'Build an autonomous content pipeline',
-  'Scale my business operations with AI',
+  'Run my entire marketing department with AI',
+  'Build autonomous customer support agents',
+  'Automate my company operations end-to-end',
+  'Create an AI sales team that closes deals 24/7',
 ];
 
 interface GoalInputProps {
@@ -39,10 +39,10 @@ const GoalInput: React.FC<GoalInputProps> = ({ onSubmit }) => {
         </div>
 
         <h2 className="text-4xl md:text-5xl font-bold text-foreground text-center mb-3 font-heading tracking-tight">
-          What should Vytreon OS do for you?
+          What should your AI workforce do?
         </h2>
         <p className="text-muted-foreground text-center mb-10 text-lg">
-          Define your mission — AI agents will execute it autonomously
+          Define any mission — Vytreon OS will deploy the right agents to execute it
         </p>
 
         <div className="relative group mb-8">
@@ -53,7 +53,7 @@ const GoalInput: React.FC<GoalInputProps> = ({ onSubmit }) => {
               value={goal}
               onChange={(e) => setGoal(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-              placeholder="e.g. Automate my entire digital marketing operation..."
+              placeholder="e.g. Hire an AI team to scale my e-commerce business..."
               className="flex-1 bg-transparent text-foreground text-lg px-6 py-5 placeholder:text-muted-foreground/25 focus:outline-none font-mono"
             />
             <button
