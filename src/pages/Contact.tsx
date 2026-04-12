@@ -41,7 +41,7 @@ const Contact = () => {
     if (errors[field]) setErrors(prev => { const next = { ...prev }; delete next[field]; return next; });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
 
@@ -55,14 +55,31 @@ const Contact = () => {
 
     setSubmitting(true);
     const validated = result.data;
-    const mailtoLink = `mailto:info@vytreon.com,vytreongroup@gmail.com?subject=${encodeURIComponent(validated.subject)}&body=${encodeURIComponent(`From: ${validated.name} (${validated.email})\n\n${validated.message}`)}`;
-    window.location.href = mailtoLink;
-    
-    setTimeout(() => {
-      toast.success('Opening your email client...');
+
+    try {
+      const id = crypto.randomUUID();
+      const { error: dbError } = await supabase
+        .from('contact_submissions')
+        .insert({ id, name: validated.name, email: validated.email, subject: validated.subject, message: validated.message });
+
+      if (dbError) throw dbError;
+
+      await supabase.functions.invoke('send-transactional-email', {
+        body: {
+          templateName: 'contact-confirmation',
+          recipientEmail: validated.email,
+          idempotencyKey: `contact-confirm-${id}`,
+          templateData: { name: validated.name },
+        },
+      });
+
+      toast.success('Message sent! Check your email for a confirmation.');
       setForm({ name: '', email: '', subject: '', message: '' });
+    } catch (err: any) {
+      toast.error(err?.message || 'Something went wrong. Please try again.');
+    } finally {
       setSubmitting(false);
-    }, 500);
+    }
   };
 
   return (
